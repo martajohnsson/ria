@@ -1,1 +1,1 @@
-define(['Backbone','AddressModel'], function(Backbone,AddressModel){	AddressCollection = Backbone.Collection.extend({        model: AddressModel,        //Save Addresses to localstorage        localStorage: new Store("addresses"),    });	return TodoCollection});
+define(['Backbone','AddressModel'], function(Backbone,AddressModel){	AddressCollection = Backbone.Collection.extend({        model: AddressModel,        //Save Addresses to localstorage        localStorage: new Store("addresses"),    });	return AddressCollection});
