@@ -1,0 +1,1 @@
+define(['Backbone','UserModel'], function(Backbone,UserModel){	UserCollection = Backbone.Collection.extend({        model: UserModel,        //Save users to localstorage        localStorage: new Store("users"),    });	return UserCollection});    

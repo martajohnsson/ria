@@ -1,0 +1,1 @@
+define(['Backbone'], function(Backbone){	UserModel = Backbone.Model.extend({    });	return UserModel}); 
