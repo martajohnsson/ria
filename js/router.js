@@ -2,7 +2,24 @@ define([
 	'jQuery',
 	'Underscore',
 	'Backbone',
-	'ArtistCollection',
-	'AlbumCollection',
-	'views/index']
-);
+	'views/index'],
+
+	function( $, _, Backbone, IndexView ) 
+    {
+		return AppRouter = Backbone.Router.extend({
+			
+            initialize : function() {
+
+			},
+
+			routes : {
+				'' : 'Home'
+			},
+
+			Home : function() {
+                
+				var indexView = new IndexView();
+				indexView.render();
+			}
+		});
+});
