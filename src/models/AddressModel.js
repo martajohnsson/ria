@@ -1,1 +1,0 @@
- define(['Backbone'], function(Backbone){	AddressModel = Backbone.Model.extend({    });	return AddressModel}); 
