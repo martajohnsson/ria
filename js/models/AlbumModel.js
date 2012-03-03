@@ -5,7 +5,7 @@ define([
     var AlbumModel = Backbone.RelationalModel.extend({
       
       validate : function( attrs ) {
-        if (  !attrs.content) {
+        if (  !attrs.albumTitle) {
                throw new Error( "The Album object does not validate." );
         }
       }  

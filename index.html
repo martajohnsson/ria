@@ -4,6 +4,7 @@
     <head>
         <title>Marta Johnsson</title>
         <link rel="stylesheet" href="css/style.css" type="text/css" />
+        <link rel="stylesheet" href="css/addStyle.css" type="text/css" />
         <script src="js/lib/require.js" data-main="js/main"></script>
         
         <!--add new artist-->
@@ -12,6 +13,21 @@
                 <form method="POST" id="create-artist-form">
                     <input type="text" name="artist-name" class="artist-name" size="40" />
                     <input type="button" name="artist-submit" id="submit-artist-form" value="Add artist" />
+            	</form>
+            </div>
+        </script>
+        
+        <!--add new album for artist-->
+        <script type="text/template" id="create-album-template">
+            <div class="create-album-holder">
+                <form method="POST" id="create-album-form">
+                    <input type="text" name="album-title" class="album-title" size="40" />
+            		<select name="select-artist" id="create-album-select-artist" class="album-artist">
+                        <% _.each( artist, function( artist ) { %>
+                            <option value="<%= artist.attributes.id %>"><%= artist.attributes.artistName %></option>
+                        <% }); %>
+                    </select>
+                    <input type="button" name="album-submit" id="submit-album-form" value="Add album" />
             	</form>
             </div>
         </script>
@@ -27,7 +43,7 @@
             
             </div>
             
-            <div id="addLibraryItem">
+            <div id="newAlbum">
     
     		</div>
             
