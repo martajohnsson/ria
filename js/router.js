@@ -2,14 +2,17 @@ define([
 	'jQuery',
 	'Underscore',
 	'Backbone',
+    'ArtistCollection',
+    //'AlbumCollection',
 	'views/index'],
 
-	function( $, _, Backbone, IndexView ) 
+    function( $, _, Backbone, ArtistCollection ,IndexView )
     {
 		return AppRouter = Backbone.Router.extend({
 			
             initialize : function() {
-
+                
+                this.artistCollection = new ArtistCollection();
 			},
 
 			routes : {
@@ -17,9 +20,11 @@ define([
 			},
 
 			Home : function() {
-                
-				var indexView = new IndexView();
+
+                var indexView = new IndexView(this.artistCollection);
 				indexView.render();
+                
+                $('#newArtist').html( indexView.el );
 			}
 		});
 });

@@ -5,19 +5,31 @@
         <title>Marta Johnsson</title>
         <link rel="stylesheet" href="css/style.css" type="text/css" />
         <script src="js/lib/require.js" data-main="js/main"></script>
+        
+        <!--add new artist-->
+        <script type="text/template" id="create-artist-template">
+            <div class="create-artist-holder">
+            <form method="POST" id="create-artist-form">
+                <input type="text" name="artist-name" class="artist-name" size="40" />
+                <input type="button" name="artist-submit" id="submit-artist-form" value="Add artist" />
+        	</form>
+            </div>
+        </script>
+        
+        
     </head>
     
     <body>
         
     	<div id="wrapper">
-    
-    		<div id="addLibraryItem">
-    
-    		</div>
             
             <div id="newArtist">
             
             </div>
+            
+            <div id="addLibraryItem">
+    
+    		</div>
             
             <div id="library">
                

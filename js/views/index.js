@@ -3,26 +3,29 @@ define(
 		'jQuery',
 		'Underscore',
 		'Backbone',
-		'models/AlbumModel',
+		//'models/AlbumModel',
 		'lib/backbone/backbone.localStorage'
 	],
 
-    function( $, _ ) {
+    function( $, _, Backbone ) {
 	   
-		var indexView = Backbone.View.extend({
-			
-            el : $('#newArtist'),
+		var mainView = Backbone.View.extend({
             
-			initialize : function() {
-
+			initialize : function(artistCollection, albumCollection) {
+                
+                this.template = _.template($('#create-artist-template').html());
+                this.artistCollection = artistCollection;
 			},
             
         	render : function() {
-        	   
-        	   $(this.el).append("<button id='addArtist'>Add new artist</button>");
+
+               this.$el.html( this.template({
+					artist : this.artistCollection.models
+				}));
+               
 			}
 		});
 
-		return indexView;
+		return mainView;
 	}
 );
