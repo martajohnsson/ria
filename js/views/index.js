@@ -18,11 +18,12 @@ define(
 			},
             
             events : {
-				'click #submit-artist-form' : 'submitNewArtist'
+				'click #submit-artist-form' : 'submitNewArtist',
+                'keypress .artist-name' : 'onEnter'
 			},
             
         	render : function() {
-
+                //window.localStorage.clear()
                this.$el.html( this.template({
 					artist : this.artistCollection.models
 				}));
@@ -42,7 +43,14 @@ define(
                 {
                     console.log("Error: ", error.message);
                 }
-            }
+            },
+            
+            onEnter : function( e ) {
+				if ( e.keyCode == 13) {
+					this.submitNewArtist( e );
+					return false;
+				}
+			},
 		});
 
 		return mainView;
