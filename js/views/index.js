@@ -17,13 +17,32 @@ define(
                 this.artistCollection = artistCollection;
 			},
             
+            events : {
+				'click #submit-artist-form' : 'submitNewArtist'
+			},
+            
         	render : function() {
 
                this.$el.html( this.template({
 					artist : this.artistCollection.models
 				}));
                
-			}
+			},
+            
+            submitNewArtist : function (e) {
+                
+                var artistName = this.$('.artist-name').val();
+                
+                try{
+                    this.artistCollection.create({
+                        artistName : artistName
+                    });
+                } 
+                catch(error) 
+                {
+                    console.log("Error: ", error.message);
+                }
+            }
 		});
 
 		return mainView;
