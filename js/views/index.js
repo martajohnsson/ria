@@ -13,15 +13,14 @@ define(
             
 			initialize : function(artistCollection, albumCollection) {
                 
-                //this.template = _.template($('#create-artist-template').html());
+                //Compiles JavaScript templates into functions that can be evaluated for rendering. 
+                //Useful for rendering complicated bits of HTML from JSON data sources.
                 
+                //this.template = _.template($('#create-artist-template').html());
                 this.template = _.template($('#create-album-template').html());
+                
                 this.artistCollection = artistCollection;
                 this.albumCollection = albumCollection;
-                
-                //Bind a callback function to an object.
-				//this.albumCollection.bind( 'add', this.addOneAlbum, this );
-                //this.artistCollection.bind( 'add', this.addOneArtist, this );
 			},
             
             events : {
@@ -31,26 +30,11 @@ define(
                 'keypress .album-title' : 'onAlbumEnter',
 			},
             
-//            addOneAlbum : function( albumModel ) {
-//				
-//                albumModel.save();
-//				// Reset the text-input-field.
-//				$('.album-title').val('');
-//			},
-            
-//            addOneArtist : function( artistModel ) {
-//				
-//                artistModel.save();
-//				 //Reset the text-input-field.
-//				$('.artist-name').val('');
-//			},
-
         	render : function() {
                 //window.localStorage.clear()
                this.$el.html( this.template({
-					artist : this.artistCollection.models
-				}));
-               
+					artist : this.artistCollection.models,
+				}));              
 			},
             
             //hämtar ut data from formulären och försöker skapa en ny artist 
@@ -62,6 +46,7 @@ define(
                     this.artistCollection.create({
                         artistName : artistName
                     });
+                    $('.artist-name').val('');
                 } 
                 catch(error) 
                 {
