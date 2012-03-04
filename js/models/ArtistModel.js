@@ -13,6 +13,7 @@ define([
 		          relatedModel : AlbumModel,
 		          includeInJSON : Backbone.Model.prototype.idAttribute,
 		          collectionType : AlbumCollection,
+                  
 		          reverseRelation : {
 		            type : Backbone.HasOne,
 		            key : 'artist'
