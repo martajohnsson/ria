@@ -20,11 +20,7 @@ define([
 		          }
 		        }
 		      ],
-			/**
-			  * @param {Array} attrs The attributes to validate.
-			  * @returns {String} If something does not validate, return string
-			  * (throw error in backbone.) does not run set or save on model.
-			  */
+
 			validate : function( attrs ) {
 			if (  !attrs.artistName ) {
 			       throw new Error( "The Artist object does not validate." ); 

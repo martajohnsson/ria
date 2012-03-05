@@ -13,10 +13,9 @@ define(
             
 			initialize : function(artistCollection, albumCollection) {
                 
-                //Compiles JavaScript templates into functions that can be evaluated for rendering. 
+                //template: Compiles JavaScript templates into functions that can be evaluated for rendering. 
                 //Useful for rendering complicated bits of HTML from JSON data sources.
                 
-                //this.template = _.template($('#create-artist-template').html());
                 this.template = _.template($('#create-album-template').html());
                 
                 this.artistCollection = artistCollection;
@@ -24,53 +23,29 @@ define(
 			},
             
             events : {
-				'click #submit-artist-form' : 'submitNewArtist',
-                'keypress .artist-name' : 'onArtistEnter',
                 'click #submit-album-form' : 'submitNewAlbum',
                 'keypress .album-title' : 'onAlbumEnter',
 			},
             
         	render : function() {
                 //window.localStorage.clear()
+               //lägger till artist modelen för create-album-template och renderar ut html
                this.$el.html( this.template({
-					artist : this.artistCollection.models,
-				}));              
+					artist : this.artistCollection.models
+				}));   
+            
 			},
-            
-            //hämtar ut data from formulären och försöker skapa en ny artist 
-            submitNewArtist : function (e) {
-                
-                var artistName = this.$('.artist-name').val();
-                
-                try{
-                    this.artistCollection.create({
-                        artistName : artistName
-                    });
-                    $('.artist-name').val('');
-                } 
-                catch(error) 
-                {
-                    console.log("Error: ", error.message);
-                }
-            },
-            
-            //anropar submitNewArtist när använadren trycker på E knappen
-            onArtistEnter : function( e ) {
-				if ( e.keyCode == 13) {
-					this.submitNewArtist( e );
-					return false;
-				}
-			},
-            
+
+            //hämtar ut data from formulären och försöker skapa en ny album för en vald artist 
             submitNewAlbum : function (e) {
                 
-                var album = this.$('.album-title').val();
+                var albumTitle = this.$('.album-title').val();
                 var artistId = this.$('.album-artist').val();
                 var artist = this.artistCollection.get(artistId);
                 
                 try{
                     this.albumCollection.create({
-                        albumTitle : album,
+                        albumTitle : albumTitle,
                         artist : artist
                     });
                     $('.album-title').val('');
@@ -80,7 +55,7 @@ define(
                     console.log("Error: ", error.message);
                 }
             },
-            
+            //anropar submitNewAlbum när använadren trycker på E knappen
             onAlbumEnter : function( e ) {
 				if ( e.keyCode == 13) {
 					this.submitNewAlbum( e );

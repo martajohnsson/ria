@@ -5,9 +5,10 @@ define([
     'ArtistCollection',
     'AlbumCollection',
 	'views/index',
-    'views/ArtistCollectionView'],
+    'views/ArtistCollectionView',
+    'views/newArtist'],
 
-    function( $, _, Backbone, ArtistCollection, AlbumCollection ,IndexView, ArtistCollectionView )
+    function( $, _, Backbone, ArtistCollection, AlbumCollection ,IndexView, ArtistCollectionView, NewArtistView )
     {
 		return AppRouter = Backbone.Router.extend({
 			
@@ -19,7 +20,8 @@ define([
 			},
 
 			routes : {
-				'' : 'Index'
+				'' : 'Index',
+                'newArtist' : 'NewArtist'
 			},
 
 			Index : function() {
@@ -30,12 +32,21 @@ define([
                 
                 var artistCollectionView = new ArtistCollectionView({collection:this.artistCollection});
                 artistCollectionView.render();
-                
-                $('#newArtist').html( indexView.el );
-                
-                //$('#newAlbum').html( indexView.el );
+
+
+                $('#newAlbum').html( indexView.el );
                 $('#library-holder').html( artistCollectionView.el ); 
                 
-			}
+			},
+            
+            NewArtist : function(){
+                var newArtistView = new NewArtistView(this.artistCollection);
+                newArtistView.render();
+                
+                newArtistView.on( 'artistAdded', function( artistModel ) {
+						this.navigate('', { trigger : true } );
+						newArtistView.remove();
+				}, this );
+            }
 		});
 });
