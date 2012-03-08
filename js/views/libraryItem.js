@@ -6,8 +6,16 @@ define(
 		var libraryItemView = Backbone.View.extend({
 
 			initialize : function() {
-				this.template = _.template( $('#library-template').html() );
-                
+				this.template = _.template( $('#library-template').html() );  
+			},
+
+			events : {
+				'click #remove' : 'remove'
+			},
+
+			remove : function( e ) {
+				// Destory the model.
+				this.model.destroy();
 			},
 
 			render : function() {

@@ -30,9 +30,8 @@ define([
                 var indexView = new IndexView(this.artistCollection, this.albumCollection);
 				indexView.render();
                 
-                var artistCollectionView = new ArtistCollectionView({collection:this.artistCollection});
+                var artistCollectionView = new ArtistCollectionView( { collection:this.artistCollection } );
                 artistCollectionView.render();
-
 
                 $('#newAlbum').html( indexView.el );
                 $('#library-holder').html( artistCollectionView.el ); 
@@ -40,10 +39,10 @@ define([
 			},
             
             NewArtist : function(){
-                var newArtistView = new NewArtistView(this.artistCollection);
+                var newArtistView = new NewArtistView({ collection: this.artistCollection });
                 newArtistView.render();
                 
-                newArtistView.on( 'artistAdded', function( artistModel ) {
+                newArtistView.on( 'artistAdded', function() {
 						this.navigate('', { trigger : true } );
 						newArtistView.remove();
 				}, this );
