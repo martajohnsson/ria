@@ -11,12 +11,11 @@ define([
 		  
 			el : $('#newArtist'),
 
-			initialize : function( artistCollection ) {
+			initialize : function() {
                 
 				$('#newArtist-wrapper').css( 'display', 'block' );
                 
 				this.template = _.template( $( '#create-artist-template' ).html() );
-				this.artistCollection = artistCollection;
                 
 			},
 
@@ -34,16 +33,13 @@ define([
             //hämtar ut data from formulären och försöker skapa en ny artist 
             submitNewArtist : function (e) {
                 
-                var artistName = this.$('.artist-name').val();
-                
                 try{
                     
-                    var artistModel = new ArtistModel({artistName:artistName});
-                    this.artistCollection.add(artistModel);
-                    this.trigger('artistAdded', artistModel);
+                    this.collection.create({
+                    	artistName : this.$('.artist-name').val()
+                    });
                     
-                    //this.$el.remove();
-				    //$('##newArtist-wrapper').remove();
+                    this.trigger('artistAdded');
 
                 } 
                 catch(error) 

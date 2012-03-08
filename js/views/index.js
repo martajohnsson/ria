@@ -38,15 +38,10 @@ define(
 
             //hämtar ut data from formulären och försöker skapa en ny album för en vald artist 
             submitNewAlbum : function (e) {
-                
-                var albumTitle = this.$('.album-title').val();
-                var artistId = this.$('.album-artist').val();
-                var artist = this.artistCollection.get(artistId);
-                
                 try{
                     this.albumCollection.create({
-                        albumTitle : albumTitle,
-                        artist : artist
+                        albumTitle : this.$('.album-title').val(),
+                        artist : this.artistCollection.get( this.$('.album-artist').val() )
                     });
                     $('.album-title').val('');
                 } 
@@ -55,6 +50,7 @@ define(
                     console.log("Error: ", error.message);
                 }
             },
+            
             //anropar submitNewAlbum när använadren trycker på E knappen
             onAlbumEnter : function( e ) {
 				if ( e.keyCode == 13) {
