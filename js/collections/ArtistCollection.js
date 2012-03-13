@@ -16,10 +16,12 @@ define([
     			// If collection is empty, create defaults.
     			if ( this.models.length === 0 ) {
                     this.create( { artistName : 'Madonna' } );
-                    this.create( { artistName : 'Kazik' } );
-                    this.create( { artistName : 'Zorro' } );
     			}
-    		}
+    		},
+
+            comparator : function( model ) {
+                return model.get( 'artistName' );
+            }
     	});
     
     	return ArtistCollection;
