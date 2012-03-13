@@ -8,12 +8,13 @@
 // as that.
 
 // Generate four random hex digits.
-function S4() {
+(function(_, Backbone){
+var S4 = function() {
    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
 };
 
 // Generate a pseudo-GUID by concatenating random hexadecimal.
-function guid() {
+var guid = function() {
    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 };
 
@@ -101,4 +102,6 @@ Backbone.localSync = function(method, model, options, error) {
 // Override 'Backbone.sync' to default to localSync, 
 // the original 'Backbone.sync' is still available in 'Backbone.ajaxSync'
 Backbone.ajaxSync = Backbone.sync;
-Backbone.sync = Backbone.localSync
+Backbone.sync = Backbone.localSync;
+}
+)(_, Backbone);
