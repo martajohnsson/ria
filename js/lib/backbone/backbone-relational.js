@@ -5,7 +5,7 @@
  * Backbone-relational may be freely distributed under the MIT license.
  * For details and documentation: https://github.com/PaulUithol/Backbone-relational.
  * Depends on (as in, compeletely useless without) Backbone: https://github.com/documentcloud/backbone.
- */
+ */ 
 ( function(_, Backbone) {
 	/**
 	 * CommonJS shim
