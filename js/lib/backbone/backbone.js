@@ -3,6 +3,8 @@ define( ['order!lib/backbone/backbone-full',
 		'order!lib/backbone/backbone-relational'],
         
 	function() {
-		return Backbone;
+		_.noConflict();
+        $.noConflict();
+        return Backbone.noConflict();
 	}
 );
