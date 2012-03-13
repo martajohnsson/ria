@@ -1,9 +1,9 @@
 define(
-	['Backbone'],
+	['Backbone', 'Underscore', 'jQuery'],
 
-	function( Backbone ) {
+	function(Backbone, _, $) {
 	   
-		var libraryItemView = Backbone.View.extend({
+		return Backbone.View.extend({
 
 			initialize : function() {
 				this.template = _.template( $('#library-template').html() );  
@@ -27,7 +27,5 @@ define(
 				return this;
 			}
 		});
-	
-		return libraryItemView;
 	}
 );
