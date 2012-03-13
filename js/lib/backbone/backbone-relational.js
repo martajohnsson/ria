@@ -6,7 +6,7 @@
  * For details and documentation: https://github.com/PaulUithol/Backbone-relational.
  * Depends on (as in, compeletely useless without) Backbone: https://github.com/documentcloud/backbone.
  */
-( function( undefined ) {
+( function(_, Backbone) {
 	/**
 	 * CommonJS shim
 	 **/
@@ -1221,4 +1221,4 @@
 		
 		return this;
 	};
-})();
+})(_, Backbone);
