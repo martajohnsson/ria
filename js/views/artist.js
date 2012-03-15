@@ -8,6 +8,10 @@ define(
 		var artistView = Backbone.View.extend({
 			className : 'artist',
 
+			events : {
+				'click #removeArtist' : 'remove'
+			},
+
 			initialize : function() {
 			},
 
@@ -17,7 +21,8 @@ define(
 
 			render : function() {
 			     //visar H2 med artist namn
-				this.$el.append( '<h2>'+this.model.attributes.artistName+'</h2>' );
+				this.$el.append( '<h2 class="artisth2">'+this.model.attributes.artistName+'</h2>' );
+				this.$el.append('<img src="images/remove.png" alt="remove button" title="remove '+this.model.attributes.artistName+'" id="removeArtist" />');
                 
                 //och för varje sådan artist visar en lista med dess albums
 				if ( this.model.attributes.album )

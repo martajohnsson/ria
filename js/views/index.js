@@ -38,16 +38,25 @@ define(
 
             //hämtar ut data from formulären och försöker skapa en ny album för en vald artist 
             submitNewAlbum : function (e) {
-                try{
-                    this.albumCollection.create({
-                        albumTitle : this.$('.album-title').val(),
-                        artist : this.artistCollection.get( this.$('.album-artist').val() )
-                    });
-                    $('.album-title').val('');
-                } 
-                catch(error) 
+                $('#albumValidationMessage').css('visibility', 'hidden');
+                
+                if( $('.album-title').val() != '' )
                 {
-                    console.log("Error: ", error.message);
+                   try {
+                        this.albumCollection.create({
+                            albumTitle : this.$('.album-title').val(),
+                            artist : this.artistCollection.get( this.$('.album-artist').val() )
+                        });
+                        $('.album-title').val('');
+                    } 
+                    catch(error) 
+                    {
+                        console.log("Error: ", error.message);
+                    } 
+                }
+                else
+                {
+                    $('#albumValidationMessage').css('visibility', 'visible');
                 }
             },
             
