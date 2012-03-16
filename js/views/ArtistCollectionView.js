@@ -1,10 +1,11 @@
 define(
 	[
 		'Backbone',
-		'views/artist'
+		'views/artist',
+		'jQuery'
 	],
 
-	function( Backbone, ArtistView ) {
+	function( Backbone, ArtistView, $) {
 		var ArtistCollectionView = Backbone.View.extend({
 
 			initialize : function() {

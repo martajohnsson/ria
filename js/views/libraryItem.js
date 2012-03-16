@@ -10,12 +10,22 @@ define(
 			},
 
 			events : {
-				'click #remove' : 'remove'
+				'click #remove' : 'remove',
+				'click .songitem' : 'changeItem'
 			},
 
 			remove : function( e ) {
 				// Destory the model.
 				this.model.destroy();
+			},
+
+			changeItem : function() {
+				var change = prompt("What do you want to change the value of " + this.model.get('albumTitle') + " to", this.model.get('albumTitle'))
+				if (change!=null && change!="") {
+					this.model.save({albumTitle: change});
+					this.$el.empty();
+					this.render();
+				}
 			},
 
 			render : function() {
@@ -27,5 +37,4 @@ define(
 				return this;
 			}
 		});
-	}
-);
+});

@@ -34,7 +34,6 @@ define([
             submitNewArtist : function (e) {
                 
                 try{
-                    
                     this.collection.create({
                     	artistName : this.$('.artist-name').val()
                     });
