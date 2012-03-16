@@ -20,6 +20,7 @@ define(
                 
                 this.artistCollection = artistCollection;
                 this.albumCollection = albumCollection;
+				this.artistCollection.bind( 'all', this.render, this );
 			},
             
             events : {

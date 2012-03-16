@@ -9,7 +9,8 @@ define(
 			className : 'artist',
 
 			events : {
-				'click #removeArtist' : 'remove'
+				'click #removeArtist' : 'remove',
+				'click .artisth2' : 'changeItem'
 			},
 
 			initialize : function() {
@@ -17,6 +18,15 @@ define(
 
 			remove : function( e ) {
 				this.model.destroy();
+			},
+
+			changeItem : function() {
+				var change = prompt("What do you want to change the value of " + this.model.get('artistName') + " to", this.model.get('artistName'))
+				if (change!=null && change!="") {
+					this.model.save({artistName: change});
+					this.$el.empty();
+					this.render();
+				}
 			},
 
 			render : function() {
