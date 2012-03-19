@@ -1,10 +1,11 @@
 define(
 	[
 		'Backbone',
-		'views/artist'
+		'views/artist',
+		'jQuery'
 	],
 
-	function( Backbone, ArtistView ) {
+	function( Backbone, ArtistView, $) {
 		var ArtistCollectionView = Backbone.View.extend({
 
 			initialize : function() {
@@ -13,6 +14,7 @@ define(
 
 			render : function() {
 				this.$el.empty();
+				
 				for( var i = 0; i < this.collection.length; i++ ) {
 					var artistView = new ArtistView( { collection : this.collection,  model : this.collection.at( i ) } );
 					this.$el.append(artistView.render().$el);

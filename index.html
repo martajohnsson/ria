@@ -11,7 +11,7 @@
         <script type="text/template" id="create-artist-template">
             <div class="create-artist-holder">
                 <form method="POST" id="create-artist-form">
-                    <input type="text" name="artist-name" class="artist-name" size="40" />
+                    <input type="text" name="artist-name" class="artist-name" size="40" maxlength="80" />
                     <input type="button" name="artist-submit" id="submit-artist-form" value="Add artist" />
             	</form>
             </div>
@@ -22,7 +22,7 @@
             <div class="create-album-holder">
                 <form method="POST" id="create-album-form">
                 <span id="albumValidationMessage">Enter a albumtitle</span><br/>
-                    <input type="text" name="album-title" class="album-title" size="40" />
+                    <input type="text" name="album-title" class="album-title" size="40" maxlength="80" />
             		<select name="select-artist" id="create-album-select-artist" class="album-artist">
                         <% _.each( artist, function( artist ) { %>
                             <option value="<%= artist.attributes.id %>"><%= artist.attributes.artistName %></option>
@@ -35,7 +35,7 @@
         
         <!-- library -->
         <script type="text/template" id="library-template">
-            <p><img id="remove" src="images/removeAlbum.png" /><%= album.albumTitle %></p>
+            <p><img id="remove" src="images/removeAlbum.png" /><span class="songitem"><%= album.albumTitle %></span></p>
         </script>
         
         
